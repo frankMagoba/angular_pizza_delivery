@@ -26,8 +26,8 @@ export class PizzaService {
     console.log(options);
     return this.http.get<Pizza[]>(this.pizzaURL, options)
       .pipe(
-      tap(_ => this.log(`fetched pizza based oon search term ${term}`)),
-      catchError(this.handleError<Pizza[]>('searchPizzas', []))
+        tap(_ => this.log(`fetched pizza based oon search term ${term}`)),
+        catchError(this.handleError<Pizza[]>('searchPizzas', []))
       );
   }
 
@@ -53,7 +53,7 @@ export class PizzaService {
       console.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-       console.error(`${operation} failed: ${error.message}`);
+      console.error(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
